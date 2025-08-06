@@ -722,7 +722,9 @@ export class Http2SubchannelConnector implements SubchannelConnector {
         }
       });
       this.session = session;
-      this.session.setLocalWindowSize(windowSize);
+      if (windowSize) {
+        this.session.setLocalWindowSize(windowSize);
+      }
       let errorMessage = 'Failed to connect';
       let reportedError = false;
       session.unref();
